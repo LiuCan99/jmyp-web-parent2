@@ -1,0 +1,16 @@
+server:
+  port: 10086 #eureka端口号
+
+spring:
+  application:
+    name: eureka-web-server #eureka服务的名字
+
+eureka:
+  server:
+    enable-self-preservation: false # Eureka自我保护机制，true打开/false禁用，默认打开状态，建议生产环境打开此配置。
+    eviction-interval-timer-in-ms: 5000 # 修改检查失效服务的时间
+  client:
+    fetch-registry: false # 定期的更新客户端的服务清单，以保证服务访问的正确性
+    register-with-eureka: false # 是否将自己注册为服务
+    service-url:
+      defaultZone: http://127.0.0.1:${server.port}/eureka # eureka服务的开放地址

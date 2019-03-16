@@ -1,0 +1,59 @@
+server:
+  port: 10010
+
+spring:
+  application:
+    name: api-web-gateway
+  servlet:
+    multipart:
+      max-file-size: 2MB
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+  instance:
+    prefer-ip-address: true
+zuul:
+  prefix: /v1
+  retryable: true
+  routes:
+    web-service: /web/**
+    auth-service: /auth/**
+    search-service: /search/**
+    cart-service: /cart/**
+  sensitive-headers: Cookie,Set-Cookie
+
+
+ribbon:
+  ConnectTimeout: 100
+  ReadTimeout: 600
+  OkToRetryOnAllOperations: true
+  MaxAutoRetriesNextServer: 2
+  MaxAutoRetries: 1
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 6000
+sc:
+  jwt:
+    pubKeyPath: E:/ras/ras.pub # 公钥地址
+#    过滤器的白名单
+  filter:
+    allowPaths:
+    - /regist
+    - /sms
+    - /login
+    - /categorys
+    - /news
+    - /brands
+    - /specifications
+    - /search
+    - /goods
+    - /comments
+
+

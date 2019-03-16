@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/es-demo" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jmyp-web-auth" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jmyp-web-auth/jmyp-web-auth-common2" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jmyp-web-auth/jmyp-web-auth-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jmyp-web-cart" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jmyp-web-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jmyp-web-eureka-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jmyp-web-gateway" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jmyp-web-order" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jmyp-web-pojo2" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jmyp-web-search2" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jmyp-web-server" charset="UTF-8" />
+  </component>
+</project>
