@@ -16,17 +16,17 @@ public class SkuSearchController {
     @Resource
     private SkuSearchService skuSearchService;
 
-    //@GetMapping("/search")
+    /**
+     * 商品查询功能
+     * @param searchRequest 查询条件的封装对象
+     * @return
+     */
     @PostMapping("/search")
     public ResponseEntity<BaseResult> search( @RequestBody SearchRequest searchRequest){
-
-        System.out.println(searchRequest);
-
-        //1 查询
        // BaseResult baseResult = this.skuSearchService.search( searchRequest );
+        //1 查询（调用service中的方法）
         BaseResult search = skuSearchService.search(searchRequest);
-
-        //2 封装
+        //2 封装，并返回
         return ResponseEntity.ok( search );
 
     }

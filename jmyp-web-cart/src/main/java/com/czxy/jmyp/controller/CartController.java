@@ -37,14 +37,18 @@ public class CartController {
         //1校验token
         UserInfo userInfo;
         try {
+            //以请求头的方式获得token
             String token = req.getHeader("Authorization");
             System.out.println("=======================================");
+            //通过公钥对token进行校验
             userInfo = JwtUtils.getInfoFromToken(token, jwtProperties.getPublicKey());
         } catch (Exception e) {
             e.printStackTrace();
+            //没有token则是未登录状态
             return ResponseEntity.ok( new BaseResult(1 , "失败，没有登录") );
         }
 
+        //token校验成功，调用addCart方法进行商品添加到购物车
         this.cartService.addCart(userInfo , cartRequest);
         return ResponseEntity.ok( new BaseResult(0 , "成功") );
     }

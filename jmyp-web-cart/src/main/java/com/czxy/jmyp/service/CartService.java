@@ -77,8 +77,6 @@ public class CartService {
         //3 保存购物车
         redisTemplate.opsForValue().set( key , JSON.toJSONString(cart) );
     }
-
-
     /**
      * 查询购物车列表
      * @param userInfo
@@ -86,14 +84,12 @@ public class CartService {
      */
     public Cart queryCartList(UserInfo userInfo) {
         String key = "cart" + userInfo.getId().toString();
-        // 获取hash操作对象
+        // 获取hash操作对象（获得Redis中对应的购物车）
         String cartString = this.redisTemplate.opsForValue().get(key);
 
         // 2 获得购物车，如果没有创建一个
         return JSON.parseObject(cartString, Cart.class);
     }
-
-
     /**
      * 更新购物车
      * @param userInfo
@@ -102,16 +98,18 @@ public class CartService {
     public  void  updateCart( UserInfo userInfo,CartRequest cartRequest){
         //1获得购物车
         String key="cart"+userInfo.getId();
+        //通过传递的用户id获得购物车
         String catStr=redisTemplate.opsForValue().get(key);
            //处理是否有购物车，没有创建，有转换（jsonStr——>java对象）
         Cart cart=JSON.parseObject(catStr,Cart.class);
+        //判断该用户是否有购物车对象
         if(cart==null){
             throw  new  RuntimeException("购物车不存在");
         }
         //2 更新
         cart.updateCart(cartRequest.getSkuid(),cartRequest.getCount(),cartRequest.getCheckde());
 
-        //3 保存购物车
+        //3 把redis中的购物车进行更新
         redisTemplate.opsForValue().set(key,JSON.toJSONString(cart));
     }
 

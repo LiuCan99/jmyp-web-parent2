@@ -24,13 +24,19 @@ public class SkuSearchService {
     @Resource
     private SkuRepository skuRepository;
 
+    /**
+     * 商品查询（包含条件查询）
+     * @param searchRequest  查询条件的封装对象
+     * @return
+     */
     public BaseResult search(SearchRequest searchRequest){
 
-        //0 拼凑条件,使用 BoolQueryBuilder 进行条件的追加（and or）
+        //0 拼凑条件,使用 BoolQueryBuilder（elasticsearch） 进行条件的追加（and or）
         BoolQueryBuilder boolQueryBuilder = new BoolQueryBuilder();
         //0.1 关键字（暂时不实现）
-        //0.2 品牌
+        //0.2 品牌（判断是否传递了品牌参数）
         if( searchRequest.getBrand_id() != null ){
+            //拼凑品牌条件
             boolQueryBuilder.must(QueryBuilders.termQuery("brandId" , searchRequest.getBrand_id() ) );
         }
         //0.3 规格 : 遍历map依次处理每一个规格，key有要求
